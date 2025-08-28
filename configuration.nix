@@ -4,16 +4,18 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./Modules/user/gnome.nix
-     # ./Modules/user/kde.nix
-     # ./Modules/user/xfce.nix
-      ./Modules/user/sh.nix
-      ./Modules/user/config-perso/alacritty.nix
-      ./Modules/user/config-perso/fastfetch.nix
-      ./Modules/user/config-perso/kitty.nix
-      ./Modules/system/filesystem.nix
-      ./Modules/system/config-home.nix
-      ./Modules/system/service.nix
+      
+      # Modules NixOS personnalisés
+      ../../Modules/user/gnome.nix
+      ../../Modules/user/kde.nix
+      ../../Modules/user/xfce.nix
+      ../../Modules/user/sh.nix
+      ../../Modules/user/config-perso/alacritty.nix
+      ../../Modules/user/config-perso/fastfetch.nix
+      ../../Modules/user/config-perso/kitty.nix
+      ../../Modules/system/filesystem.nix
+      ../../Modules/system/config-home.nix
+      ../../Modules/system/service.nix
     ];
 
   # Bootloader GRUB.
