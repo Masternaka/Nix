@@ -27,7 +27,6 @@
     #zsh
 
     # Terminal emulators et personnalisation
-    alacritty
     kitty-themes
     kitty
     oh-my-posh
@@ -44,7 +43,7 @@
     #ripgrep
     fd
     stow
-    
+
     # Éditeurs de texte et outils de développement
     vscode
     zed-editor
@@ -53,7 +52,7 @@
     #micro
     github-desktop
     gitkraken
-    
+
     # Outils pour firewall
     firewalld-gui
 
@@ -117,10 +116,10 @@
 
     # Cummunication
     discord
-    vesktop-bin
+    #vesktop
   ];
 
-  
+
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
@@ -149,15 +148,15 @@
     BROWSER = "firefox";
   };
 
-  gtk.iconTheme = {
-    package = pkgs.papirus-icon-theme;
-    
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus";
+      package = pkgs.papirus-icon-theme;
+    };
   };
 
   # Utiliser ceci pour utiliser Alacritty avec Home Manager mais sans créer de fichier de configuration .nix
   # home.file.".config/alacritty/alacritty.toml".source = ./alacritty.toml
 
-
-  # Let home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
