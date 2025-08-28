@@ -72,10 +72,13 @@ networking.firewall.enable = true;
   #blueman.enable = true;
 
 # Active le service flatpak
-services.flatpak.enable = true;
-remotes = [{
-      name = "flathub";
-      location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+services.flatpak = {
+  enable = true;
+  remotes = [{
+    name = "flathub";
+    location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+  }];
+};
 
 # Ajout du support flatpak pour l'environment de bureau KDE plasma 6.
  #  xdg.portal = {
