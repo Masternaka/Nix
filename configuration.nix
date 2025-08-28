@@ -4,13 +4,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      
+
       # Modules NixOS personnalisés
       ../../Modules/system/filesystem.nix
       ../../Modules/system/service.nix
     ];
 
-  Bootloader configuration pour systemd-boot.
+  # Bootloader configuration pour systemd-boot.
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -47,7 +47,7 @@
     description = "Gabriel Chapdelaine";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
-  
+
   };
 
   # Ajout de l'accélération matérielle vidéo
@@ -70,21 +70,21 @@
   ];
 
   # Allow unfree packages in the system.
-    nixpkgs.config.allowUnfree = true; 
+    nixpkgs.config.allowUnfree = true;
 
   # Permettre des paquets insecure
-    #nixpkgs.config.permittedInsecurePackages = [
-              # "openssl-1.1.1w"
-           #  ]; 
-  
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "openssl-1.1.1w"
+  # ];
+
   # wheel group gets trusted access to nix daemon
-    nix.settings.trusted-users = [ "@wheel" ];
+  nix.settings.trusted-users = [ "@wheel" ];
 
   # Ensure nix flakes are enabled
-    nix.settings.experimental-features =[ "flakes" "nix-command" ];
+  nix.settings.experimental-features =[ "flakes" "nix-command" ];
 
   # Permet l'utilisation de configuration personelle sans home-manager
-     #environment.variables.KITTY_CONFIG_DIRECTORY = "~/.config/kitty";
+  # environment.variables.KITTY_CONFIG_DIRECTORY = "~/.config/kitty";
 
 
   system.stateVersion = "25.05"; # Did you read the comment?
