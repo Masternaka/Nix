@@ -8,7 +8,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak ... }:
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -18,8 +18,8 @@
       desktop-nix = lib.nixosSystem {
         inherit system;
         modules = [ 
-        ./configuration.nix 
-        nix-flatpak.nixosModules.nix-flatpak
+          ./configuration.nix 
+          nix-flatpak.nixosModules.nix-flatpak
         ];
       };
     };
