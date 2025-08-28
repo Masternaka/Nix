@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-
   imports = [
     ../../Modules/user/flatpak.nix
     ../../Modules/user/git.nix
@@ -24,7 +23,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    
     # Base system
     #zsh
 
@@ -120,11 +118,9 @@
     # Cummunication
     discord
     vesktop-bin
-
   ];
 
-  home.file = {
-
+  
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
@@ -144,7 +140,7 @@
       XDG_ORG_DIR = "${config.home.homeDirectory}/Org";
       XDG_PODCAST_DIR = "${config.home.homeDirectory}/Media/Podcasts";
       XDG_BOOK_DIR = "${config.home.homeDirectory}/Media/Books";
-
+    };
   };
 
   home.sessionVariables = {
