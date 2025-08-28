@@ -15,8 +15,9 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
     timeout = 15;
-    boot.kernelPackages = pkgs.linuxPackages_latest;
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "desktop-nix"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -39,8 +40,6 @@
 
   # Configure console keymap
   console.keyMap = "cf";
-
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gabriel = {
