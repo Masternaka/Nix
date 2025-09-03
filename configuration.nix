@@ -8,6 +8,9 @@
       # Modules NixOS personnalisés
       ../../Modules/system/filesystem.nix
       ../../Modules/system/service.nix
+      ../../Modules/system/gnome.nix
+      ../../Modules/system/kde.nix
+      ../../Modules/system/xfce.nix
     ];
 
   # Bootloader configuration pour systemd-boot.

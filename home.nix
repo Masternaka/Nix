@@ -2,17 +2,14 @@
 
 {
   imports = [
-    ../../Modules/user/flatpak.nix
-    ../../Modules/user/git.nix
     ../../Modules/user/programs.nix
-    ../../Modules/user/samba.nix
+    ../../Modules/user/flatpak.nix
     ../../Modules/user/sh.nix
-    ../../Modules/user/gnome.nix
-    # ../../Modules/user/kde.nix
-    # ../../Modules/user/xfce.nix
-    ../../Modules/home/alacritty.nix
-    ../../Modules/home/fastfetch.nix
-    ../../Modules/home/kitty.nix
+    ../../Modules/user/samba.nix
+    ../../Modules/user/git.nix
+    ../../Modules/appsconfig/alacritty.nix
+    ../../Modules/appsconfig/fastfetch.nix
+    ../../Modules/appsconfig/kitty.nix
   ];
 
   home.username = "gabriel";
