@@ -3,10 +3,10 @@
 {
   programs.git = {
     enable = true;
-	 config = {
-	   user.name = "Masternaka";
-     user.email = "gabthesniper@gmail.com";
-	   init.defaultBranch = "main";
+	  userName = "Masternaka";
+    userEmail = "gabthesniper@gmail.com";
+	  extraConfig = {
+      init.defaultBranch = "main";
 	  };
   };
 }
