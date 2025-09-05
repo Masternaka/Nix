@@ -5,7 +5,6 @@
     ./modules/user/programs.nix
     ./modules/user/flatpak.nix
     ./modules/user/sh.nix
-    ./modules/user/samba.nix
     ./modules/user/git.nix
     ./modules/appsconfig/alacritty.nix
     ./modules/appsconfig/fastfetch.nix

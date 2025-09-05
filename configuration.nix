@@ -8,6 +8,7 @@
       # modules NixOS personnalisés
       ./modules/system/filesystem.nix
       ./modules/system/service.nix
+      ./modules/system/samba.nix
       ./modules/system/gnome.nix
       ./modules/system/kde.nix
       ./modules/system/xfce.nix
@@ -69,7 +70,6 @@
     wget
     git
     curl
-    #home-manager
   ];
 
   # Allow unfree packages in the system.
