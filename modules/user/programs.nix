@@ -3,7 +3,7 @@
 {
 
   # Pour utiliser le shell bash
-  environment.shell = with pkgs; [ bash ];
+  environment.shells = with pkgs; [ bash ];
   users.defaultUserShell = pkgs.bash;
   programs.bash.enable = true;
 
@@ -21,6 +21,7 @@
   programs.firefox.enable = true;
   nixpkgs.config.firefox = {
     enableWidevine = true;
+  };
 
   # Programme qui facilite la gestion des commandes système pour la mise à jour 
   programs.nh.enable = true;
@@ -30,8 +31,4 @@
   #programs.vim.package = pkgs.vim-full;
   #programs.vim.defaultEditor = true;
 
- 
-};
-
-  };
 }
