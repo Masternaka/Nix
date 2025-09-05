@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ../../Modules/user/programs.nix
-    ../../Modules/user/flatpak.nix
-    ../../Modules/user/sh.nix
-    ../../Modules/user/samba.nix
-    ../../Modules/user/git.nix
-    ../../Modules/appsconfig/alacritty.nix
-    ../../Modules/appsconfig/fastfetch.nix
-    ../../Modules/appsconfig/kitty.nix
+    ./modules/user/programs.nix
+    ./modules/user/flatpak.nix
+    ./modules/user/sh.nix
+    ./modules/user/samba.nix
+    ./modules/user/git.nix
+    ./modules/appsconfig/alacritty.nix
+    ./modules/appsconfig/fastfetch.nix
+    ./modules/appsconfig/kitty.nix
   ];
 
   home.username = "gabriel";
@@ -57,6 +57,7 @@
     ffmpeg-full
 
     # Web browsers
+    firefox
     brave
     vivaldi
     vivaldi-ffmpeg-codecs

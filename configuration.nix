@@ -5,12 +5,12 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
-      # Modules NixOS personnalisés
-      ../../Modules/system/filesystem.nix
-      ../../Modules/system/service.nix
-      ../../Modules/system/gnome.nix
-      ../../Modules/system/kde.nix
-      ../../Modules/system/xfce.nix
+      # modules NixOS personnalisés
+      ./modules/system/filesystem.nix
+      ./modules/system/service.nix
+      ./modules/system/gnome.nix
+      ./modules/system/kde.nix
+      ./modules/system/xfce.nix
     ];
 
   # Bootloader configuration pour systemd-boot.
@@ -54,7 +54,7 @@
   };
 
   # Ajout de l'accélération matérielle vidéo
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       vaapiVdpau
@@ -69,7 +69,7 @@
     wget
     git
     curl
-    home-manager
+    #home-manager
   ];
 
   # Allow unfree packages in the system.
