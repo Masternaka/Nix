@@ -1,4 +1,7 @@
-programs.kitty = {
+{ config, lib, pkgs, ... }:
+
+{
+  programs.kitty = {
   enable = true;
   font = {
     name = "FiraCode Nerd Font";
