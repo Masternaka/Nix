@@ -84,11 +84,7 @@
     claude-code
 
     # Virtualisation
-    virt-manager
-    qemu
-    libvirt
     distrobox
-    podman
 
     # Utilitaires spécifiques à NixOS
     nixpkgs-fmt
