@@ -94,8 +94,6 @@ services.flatpak = {
    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
    config.common.default = "gnome";
    };
-  }
-];
 
 # Active le service libvirtd
 virtualisation.libvirtd.enable = true;
