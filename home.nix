@@ -31,7 +31,7 @@
     fastfetch
     #fzf
     #bat
-    ranger
+    #ranger
     #yazi
     #eza
     #zoxide
@@ -101,7 +101,7 @@
     shellcheck
     catfish
     flameshot
-    openrgb
+    #openrgb
     ipscan
 
     # Utilitaires divers
