@@ -29,8 +29,13 @@
     enableWidevine = true;
   };
 
-  # Programme qui facilite la gestion des commandes système pour la mise à jour 
+  # Programme qui facilite la gestion des commandes système pour la mise à jour
   programs.nh.enable = true;
+  programs.nh = {
+      enable = true;
+      flake = "/home/gabriel/;   #mettre à jour le lien vers le fichier flake"
+  };
+
 
   # Programme pour la gestion des rgb de mon clavier
   services.hardware.openrgb.enable = true;

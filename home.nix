@@ -1,5 +1,15 @@
 { config, lib, pkgs, ... }:
 
+  imports = [
+    ./modules/user/programs.nix
+    ./modules/user/flatpak.nix
+    ./modules/user/sh.nix
+    ./modules/user/git.nix
+    ./modules/appsconfig/alacritty.nix
+    ./modules/appsconfig/fastfetch.nix
+    ./modules/appsconfig/kitty.nix
+  ];
+
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -15,16 +25,6 @@ let
 in
 
 {
-  imports = [
-    ./modules/user/programs.nix
-    ./modules/user/flatpak.nix
-    ./modules/user/sh.nix
-    ./modules/user/git.nix
-    ./modules/appsconfig/alacritty.nix
-    ./modules/appsconfig/fastfetch.nix
-    ./modules/appsconfig/kitty.nix
-  ];
-
   home.username = "gabriel";
   home.homeDirectory = "/home/gabriel";
 
@@ -173,5 +173,21 @@ in
 
   # Utiliser ceci pour utiliser Alacritty avec Home Manager mais sans créer de fichier de configuration .nix
   # home.file.".config/alacritty/alacritty.toml".source = ./alacritty.toml
+
+  home.file = {
+      ".bashrc".source = ./dotfiles/.bashrc;
+  };
+
+  programs.git = {
+      enable = true;
+      settings = {
+        alias = {
+          st = "status";
+          lg = "log --oneline --graph --decorate";
+        };
+        core.editor = "nano";
+        pull.rebase = true;
+        push.autoSetupRemote = true;
+  };
 
 }
