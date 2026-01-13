@@ -20,6 +20,9 @@
   # Gestionnaire de fichiers dans le terminal
   programs.yazi.enable = true;
 
+  # Gestionnaire de machines virtuelles
+  programs.virt-manager.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
   nixpkgs.config.firefox = {
