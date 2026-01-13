@@ -2,6 +2,9 @@
 
 Configuration NixOS modulaire avec support pour plusieurs environnements de bureau et applications.
 
+Créer le dossier "nixdotfiles" et y placer les fichiers de configuration NixOS.
+Créer le dossier "dotfiles" et y placer les fichiers de configuration des applications.
+
 ## Structure du projet
 
 ```

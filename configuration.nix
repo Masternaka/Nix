@@ -18,7 +18,7 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    timeout = 15;
+    timeout = 10;
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -49,7 +49,7 @@
   users.users.gabriel = {
     isNormalUser = true;
     description = "Gabriel Chapdelaine";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "podman" ];
     packages = with pkgs; [];
 
   };

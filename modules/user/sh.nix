@@ -3,6 +3,7 @@ let
   myAliases = {
     ll = "ls -l";
     la = "ls -la";
+    nrs = "sudo nixos-rebuild switch --flake ~/nixdotfiles#desktop-nix";
   };
 in
 {

@@ -1,5 +1,19 @@
 { config, lib, pkgs, ... }:
 
+let
+  dotfiles = "${config.home.homeDirectory}/dotfiles/config";
+  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+
+  # Dossier standard de configuration .config/directory
+  configs = {
+    qtile = "qtile";
+    nvim = "nvim";
+    rofi = "rofi";
+    alacritty = "alacritty";
+    picom = "picom";
+  };
+in
+
 {
   imports = [
     ./modules/user/programs.nix
@@ -18,6 +32,13 @@
 
   programs.home-manager.enable = true;
 
+  xdg.configFile = builtins.mapAttrs
+    (name: subpath: {
+      source = create_symlink "${dotfiles}/${subpath}";
+      recursive = true;
+    })
+    configs;
+
   home.packages = with pkgs; [
     # Base system
     #zsh
@@ -26,6 +47,7 @@
     kitty-themes
     kitty
     oh-my-posh
+    alacritty
 
     # Utilitaire terminal
     fastfetch
