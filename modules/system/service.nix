@@ -95,12 +95,18 @@ services.flatpak = {
    config.common.default = "gnome";
    };
 
-# Active le service libvirtd
+# Active le service libvirtd, podman et docker
 virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.podman = {
   enable = true;
   dockerCompat = true;
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    };
+
   };
 
 # Active le service zramSwap
