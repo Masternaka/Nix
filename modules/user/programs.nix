@@ -26,6 +26,12 @@
     enableWidevine = true;
   };
 
+  # Enable AppImage
+    programs.appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
 #  # Programme qui facilite la gestion des commandes système pour la mise à jour
 #  programs.nh.enable = true;
 #  programs.nh = {
