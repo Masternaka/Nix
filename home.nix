@@ -130,7 +130,7 @@ home.file = {
   };
 
   home.sessionVariables = {
-    EDITOR = "nano";
+    EDITOR = "neovim";
     TERM = "kitty";
     BROWSER = "firefox";
   };
