@@ -17,9 +17,6 @@
   # users.defaultUserShell = pkgs.fish;
   # programs.fish.enable = true;
 
-  # Gestionnaire de fichiers dans le terminal
-  programs.yazi.enable = true;
-
   # Gestionnaire de machines virtuelles
   programs.virt-manager.enable = true;
 
@@ -29,12 +26,12 @@
     enableWidevine = true;
   };
 
-  # Programme qui facilite la gestion des commandes système pour la mise à jour
-  programs.nh.enable = true;
-  programs.nh = {
-      enable = true;
-      flake = "/home/gabriel/;   #mettre à jour le lien vers le fichier flake"
-  };
+#  # Programme qui facilite la gestion des commandes système pour la mise à jour
+#  programs.nh.enable = true;
+#  programs.nh = {
+#      enable = true;
+#      flake = "/home/gabriel/;   #mettre à jour le lien vers le fichier flake"
+#  };
 
 
   # Programme pour la gestion des rgb de mon clavier
