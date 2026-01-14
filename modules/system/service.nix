@@ -23,9 +23,38 @@ services.pipewire = {
 # services.wayland.enable = true;
 
 # Préférence du displayManager
-services.displayManager.autoLogin.enable = true;
-services.displayManager.autoLogin.user = "gabriel";
+# services.displayManager.autoLogin.enable = true;
+# services.displayManager.autoLogin.user = "gabriel";
 # services.displayManager.defaultSession = "hyprland";
+
+# Enable the GNOME Desktop Environment.
+# services.displayManager.gdm.enable = true;
+# services.desktopManager.gnome.enable = true;
+
+# Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+# Enable the XFCE Desktop Environment.
+# services.displayManager.lightdm.enable = true;
+# services.desktopManager.xfce.enable = true;
+
+# blueman.enable = true;
+# Services à activer pour certains environment de bureau
+
+# Ajout du support flatpak pour l'environment de bureau KDE plasma 6.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+    xdgOpenUsePortal = true;
+  };
+
+# Ajout du support flatpak pour l'environment de bureau GNOME.
+ # xdg.portal = {
+ #   enable = true;
+ #   extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+ #   config.common.default = "gnome";
+ #   };
 
 # Services pour réseau et disque
 services.gvfs.enable = true;
@@ -41,72 +70,27 @@ services.openssh = {
   };
 };
 
-networking.firewall.enable = true;
-
 # Open ports in the firewall Configuration personnel.
-# networking.firewall = {
-#   enable = true;
-#   allowedTCPPorts = [
-#     139  # NetBIOS Session Service
-#     445  # SMB/CIFS
-#   ];
-#   allowedUDPPorts = [
-#     137  # NetBIOS Name Service
-#     138  # NetBIOS Datagram Service
-#   ];
-# };
-
-# Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
-# Enable the KDE Plasma Desktop Environment.
-# services.displayManager.sddm.enable = true;
-# services.desktopManager.plasma6.enable = true;
-
-# Enable the XFCE Desktop Environment.
-# services.displayManager.lightdm.enable = true;
-# services.desktopManager.xfce.enable = true;
-
-# Services à activer pour certains environment de bureau
-  #blueman.enable = true;
-
-# Active le service flatpak
-services.flatpak = {
+networking.firewall = {
   enable = true;
-  remotes = [{
-    name = "flathub";
-    location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-    update.onActivation = true;
-  }];
+  allowedTCPPorts = [
+    139  # NetBIOS Session Service
+    445  # SMB/CIFS
+    22   # SSH
+  ];
+  allowedUDPPorts = [
+    137  # NetBIOS Name Service
+    138  # NetBIOS Datagram Service
+  ];
 };
-
-# Ajout du support flatpak pour l'environment de bureau KDE plasma 6.
- #  xdg.portal = {
- #    enable = true;
- #    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
- #    config.common.default = "kde";
- #  };
-
-# Ajout du support flatpak pour l'environment de bureau GNOME.
- xdg.portal = {
-   enable = true;
-   extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-   config.common.default = "gnome";
-   };
 
 # Active le service libvirtd, podman et docker
 virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.docker.enable = true;
   virtualisation.podman = {
   enable = true;
   dockerCompat = true;
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    };
-
   };
 
 # Active le service zramSwap

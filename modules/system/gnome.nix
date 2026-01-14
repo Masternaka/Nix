@@ -1,20 +1,31 @@
 { config, lib, pkgs, ... }:
 
+####### Bien vérifier le nom des paquets dans https://search.nixos.org/packages avant #######
+####### d'ajouter des paquets à cette liste. #######
+
 {
   environment.systemPackages = with pkgs; [
     #gnome-disk-utility
-    gnome-tweaks
-    gnome-shell-extensions
-    gvfs
-    gvfs-afc
-    gvfs-gphoto2
-    gvfs-mtp
-    gvfs-nfs
-    gvfs-smb
-    xdg-user-dirs-gtk
-    adw-gtk3
-    tela-circle-icon-theme
+    #gnome-shell-extensions
+    #gvfs
+    #gvfs-afc
+    #gvfs-gphoto2
+    #gvfs-mtp
+    #gvfs-nfs
+    #gvfs-smb
+    #xdg-user-dirs-gtk
     #qt6-wayland
+
+    # Thèmes et icônes
+    adw-gtk3
+    graphite-gtk-theme
+    tela-circle-icon-theme
+    vimix-cursors
+
+    # gnome
+    gnome-tweaks
+    showtime
+    shotwell
 
     # Extensions GNOME
     gnomeExtensions.user-theme
@@ -28,13 +39,14 @@
     gnomeExtensions.tiling-shell
     gnomeExtensions.vitals
     gnomeExtensions.quick-settings-audio-panel
-  ];
+    gnomeExtensions.gsconnect
+    gnomeExtensions.rounded-window-corners-reborn
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.open-bar
+    gnomeExtensions.arcmenu
+    gnomeExtensions.bluetooth-battery
 
- # Exclure les logiciels de GNOME par défaut installés
-  #environment.gnome.excludePackages = with pkgs; [
-   # gnome-tour
-   # gnome.geary
-  # ]; 
+  ];
   
   gnome.excludePackages = with pkgs; [
     tali
@@ -53,58 +65,13 @@
     gnome-user-docs
     gnome-packagekit
     gnome-font-viewer
+    gnome-music
+
   ];
 
-  programs.dconf = {
-    enable = true;
-    profiles.gdm.databases = [
-      {
-        settings = {
-          "org/gnome/desktop/peripherals/keyboard" = {
-            numlock-state = true;
-          };
-        };
-      }
-    ];
-    profiles.user.databases = [
-      {
-        settings = {
-          "org/gnome/desktop/wm/preferences" = {
-            button-layout = "appmenu:minimize,maximize,close";
-            theme = "adw-gtk3";
-            focus-mode = "click";
-            visual-bell = false;
-          };
-          "org/gnome/desktop/interface" = {
-            cursor-theme = "Adwaita";
-            gtk-theme = "adw-gtk3";
-            icon-theme = "Tela-circle";
-          };
-          "org/gnome/desktop/peripherals/keyboard" = {
-            numlock-state = true;
-          };
-          "org/gnome/shell" = {
-            disable-user-extensions = false;
-            enabled-extensions = [
-              "caffeine@patapon.info"
-              "gsconnect@andyholmes.github.io"
-              "appindicatorsupport@rgcjonas.gmail.com"
-              "dash-to-dock@micxgx.gmail.com"
-            ];
-          };
-          "org/gnome/shell/extensions/dash-to-dock" = {
-            click-action = "minimize-or-overview";
-            disable-overview-on-startup = true;
-            dock-position = "BOTTOM";
-            running-indicator-style = "DOTS";
-            isolate-monitor = false;
-            multi-monitor = true;
-            show-mounts-network = true;
-            always-center-icons = true;
-            custom-theme-shrink = true;
-          };
-        };
-      }
-    ];
+  programs.kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
   };
-}
+
+} 
