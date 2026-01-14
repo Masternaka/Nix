@@ -123,6 +123,8 @@ nix.gc.options = "--delete-older-than 15d"; # Supprimer les fichiers plus vieux 
 security.polkit.enable = true; # polkit
 services.gnome.gnome-keyring.enable = true; # secret service
 
+# Active le service flatpak
+services.flatpak.enable = true;
 
   };
 }
