@@ -9,9 +9,9 @@
       ./modules/system/filesystem.nix
       ./modules/system/service.nix
       ./modules/system/samba.nix
-      ./modules/system/gnome.nix
-      ./modules/system/kde.nix
-      ./modules/system/xfce.nix
+      ./modules/system/plasma.nix
+      #./modules/system/gnome.nix
+      #./modules/system/xfce.nix
     ];
 
   # Bootloader configuration pour systemd-boot.
@@ -86,8 +86,9 @@
   # Ensure nix flakes are enabled
   nix.settings.experimental-features =[ "flakes" "nix-command" ];
 
-  # Permet l'utilisation de configuration personelle sans home-manager
-  # environment.variables.KITTY_CONFIG_DIRECTORY = "~/.config/kitty";
-
+  # Couche de compatibilité indispensable qui permet d'exécuter des binaires téléchargés hors de Nix, exemples AppImage, binaire de GitHub, etc.
+  programs.nix-ld.enable = true;
 
   system.stateVersion = "25.05"; # Did you read the comment?
+
+} 

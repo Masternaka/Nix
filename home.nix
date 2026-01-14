@@ -5,24 +5,17 @@
     ./modules/user/flatpak.nix
     ./modules/user/sh.nix
     ./modules/user/git.nix
-    ./modules/appsconfig/alacritty.nix
-    ./modules/appsconfig/fastfetch.nix
-    ./modules/appsconfig/kitty.nix
+    #./modules/appsconfig/alacritty.nix
+    #./modules/appsconfig/fastfetch.nix
+    #./modules/appsconfig/kitty.nix
   ];
 
-let
-  dotfiles = "${config.home.homeDirectory}/dotfiles/config";
-  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-
-  # Dossier standard de configuration .config/directory
-  configs = {
-    qtile = "qtile";
-    nvim = "nvim";
-    rofi = "rofi";
-    alacritty = "alacritty";
-    picom = "picom";
+home.file = {
+      ".config/kitty/kitty.conf".source = ./kitty.conf;
+      ".config/fastfetch/config.conf".source = ./fastfetch.conf;
+      ".config/alacritty/alacritty.toml".source = ./alacritty.toml;
+      ".zed/config/settings.json".source = ./zed-settings.json;
   };
-in
 
 {
   home.username = "gabriel";
@@ -32,13 +25,6 @@ in
 
   programs.home-manager.enable = true;
 
-  xdg.configFile = builtins.mapAttrs
-    (name: subpath: {
-      source = create_symlink "${dotfiles}/${subpath}";
-      recursive = true;
-    })
-    configs;
-
   home.packages = with pkgs; [
     # Base system
     #zsh
@@ -46,33 +32,30 @@ in
     # Terminal emulators et personnalisation
     kitty-themes
     kitty
-    oh-my-posh
     alacritty
 
     # Utilitaire terminal
     fastfetch
-    #fzf
-    #bat
+    fzf
+    bat
     #ranger
-    #yazi
     #eza
-    #zoxide
+    zoxide
+    yazi
     btop
-    #ripgrep
+    ripgrep
     fd
     stow
+    #lazygit
 
     # Éditeurs de texte et outils de développement
     vscode
     zed-editor
     neovim
     meld
-    #micro
+    micro
     github-desktop
     gitkraken
-
-    # Outils pour firewall
-    firewalld-gui
 
     # Codec vidéos
     ffmpeg-full
@@ -86,20 +69,9 @@ in
     # Suite bureautique
     libreoffice-fresh
 
-    # Prise de notes et organisation
-    obsidian
-    joplin
-
     # Multimédia
     vlc
     mpv
-    gimp
-    inkscape
-    audacity
-    krita
-    obs-studio
-    handbrake
-    deadbeef
     spotify
 
     # AI
@@ -123,7 +95,7 @@ in
     shellcheck
     catfish
     flameshot
-    #openrgb
+    openrgb
     ipscan
 
     # Utilitaires divers
@@ -171,14 +143,7 @@ in
     };
   };
 
-  # Utiliser ceci pour utiliser Alacritty avec Home Manager mais sans créer de fichier de configuration .nix
-  # home.file.".config/alacritty/alacritty.toml".source = ./alacritty.toml
-
-  home.file = {
-      ".bashrc".source = ./dotfiles/.bashrc;
-  };
-
-  programs.git = {
+    programs.git = {
       enable = true;
       settings = {
         alias = {
