@@ -23,6 +23,7 @@ Créer le dossier "dotfiles" et y placer les fichiers de configuration des appli
     │   ├── gnome.nix             # Bureau GNOME
     │   ├── kde.nix               # Bureau KDE
     │   ├── samba.nix             # Partage réseau Samba
+    │   ├── firewall.nix          # Configuration du pare-feu
     │   ├── service.nix           # Services système
     │   └── xfce.nix              # Bureau XFCE
     └── user/                     # Configuration utilisateur
@@ -44,6 +45,7 @@ Créer le dossier "dotfiles" et y placer les fichiers de configuration des appli
 - **gnome.nix** : Configuration du bureau GNOME
 - **kde.nix** : Configuration du bureau KDE
 - **samba.nix** : Configuration du partage réseau via Samba
+- **firewall.nix** : Configuration du pare-feu
 - **service.nix** : Services système (daemons, services background)
 - **xfce.nix** : Configuration du bureau XFCE
 
