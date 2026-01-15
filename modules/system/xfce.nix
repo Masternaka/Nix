@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+####### Bien vérifier le nom des paquets dans https://search.nixos.org/packages avant #######
+####### d'ajouter des paquets à cette liste. #######
+
 {
   environment.systemPackages = with pkgs; [
     mugshot
