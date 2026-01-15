@@ -9,6 +9,7 @@
       ./modules/system/filesystem.nix
       ./modules/system/service.nix
       ./modules/system/samba.nix
+      ./modules/system/firewall.nix
       ./modules/system/plasma.nix
       #./modules/system/gnome.nix
       #./modules/system/xfce.nix
@@ -91,4 +92,4 @@
 
     system.stateVersion = "25.05"; # Did you read the comment?
 
-} 
+}

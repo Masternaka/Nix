@@ -1,79 +1,84 @@
 { config, lib, pkgs, ... }:
 
-# Samba pour partager des fichiers sur le réseau
 {
   services.samba = {
     package = pkgs.samba4Full;
-    usershares.enable = true;
     enable = true;
     openFirewall = true;
-    nmbd.enable = true;
-    workgroup = "WORKGROUP";
-    serverString = "sambanix";
-    netbiosName = "sambanix";
-    security = "user";
-    "fruit:aapl" = "yes";
-    "fruit:time machine" = "yes";
-    "vfs objects" = "catia fruit streams_xattr";
-  };
+    securityType = "user";
 
-  services.samba-wsdd = {
-    enable = true;
-    openFirewall = true;
-  };
+    extraConfig = ''
+      workgroup = WORKGROUP
+      server string = sambanix
+      netbios name = sambanix
 
-  services.avahi = {
-    publish.enable = true;
-    publish.userServices = true;
-    nssmdns4 = true;
-    enable = true;
-    openFirewall = true;
-  };
-
-  networking.firewall.enable = true;
-  networking.firewall.allowPing = true;
+      # Support pour Time Machine et macOS
+      fruit:aapl = yes
+      fruit:time machine = yes
+      vfs objects = catia fruit streams_xattr
+    '';
 
     shares = {
       disque500 = {
         comment = "Disque 500";
         path = "/mnt/Disque500";
-        browseable = true;
-        guestOk = false;
-        readOnly = false;
-        validUsers = [ "gabriel" ];
-        createMask = "0644";
-        directoryMask = "0755";
-    };
+        browseable = "yes";
+        "guest ok" = "no";
+        "read only" = "no";
+        "valid users" = "gabriel";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+
       sauvegarde500 = {
         comment = "Sauvegarde 500";
         path = "/mnt/Backup500";
-        browseable = true;
-        guestOk = false;
-        readOnly = false;
-        validUsers = [ "gabriel" ];
-        createMask = "0644";
-        directoryMask = "0755";
-    };
+        browseable = "yes";
+        "guest ok" = "no";
+        "read only" = "no";
+        "valid users" = "gabriel";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+
       disque250 = {
         comment = "Disque 250";
         path = "/mnt/Disque250";
-        browseable = true;
-        guestOk = false;
-        readOnly = false;
-        validUsers = [ "gabriel" ];
-        createMask = "0644";
-        directoryMask = "0755";
-    };
+        browseable = "yes";
+        "guest ok" = "no";
+        "read only" = "no";
+        "valid users" = "gabriel";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+
       sauvegarde250 = {
         comment = "Sauvegarde 250";
         path = "/mnt/Backup250";
-        browseable = true;
-        guestOk = false;
-        readOnly = false;
-        validUsers = [ "gabriel" ];
-        createMask = "0644";
-        directoryMask = "0755";
+        browseable = "yes";
+        "guest ok" = "no";
+        "read only" = "no";
+        "valid users" = "gabriel";
+        "create mask" = "0644";
+        "directory mask" = "0755";
       };
     };
   };
-} 
+
+  # Service de découverte WS-Discovery pour Windows
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  # Service Avahi pour la découverte réseau (Bonjour/Zeroconf)
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+    publish = {
+      enable = true;
+      userServices = true;
+    };
+  };
+}
