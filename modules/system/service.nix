@@ -3,18 +3,24 @@
 {
 
 # Enable CUPS to print documents.
-services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+  ];
+};
 
 # Enable sound with pipewire.
-hardware.pulseaudio.enable = false;
-security.rtkit.enable = true;
-services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  wireplumber.enable = true;
-  #jack.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    #jack.enable = true;
 };
 
 # Enable the X11 windowing system.
@@ -58,7 +64,11 @@ services.pipewire = {
 
 # Services pour réseau et disque
 services.gvfs.enable = true;
-services.avahi.enable = true;
+services.avahi = {
+  enable = true;
+  nssmdns4 = true;
+  openFirewall = true;
+};
 
 # Enable the OpenSSH daemon.
 services.openssh = {
@@ -125,6 +135,4 @@ services.gnome.gnome-keyring.enable = true; # secret service
 
 # Active le service flatpak
 services.flatpak.enable = true;
-
-  };
 }

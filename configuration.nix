@@ -49,7 +49,7 @@
   users.users.gabriel = {
     isNormalUser = true;
     description = "Gabriel Chapdelaine";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "podman" "samba" "lpadmin" ];
     packages = with pkgs; [];
 
   };
@@ -65,7 +65,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
     vim
     wget
     git
@@ -81,14 +81,14 @@
   # ];
 
   # wheel group gets trusted access to nix daemon
-  nix.settings.trusted-users = [ "@wheel" ];
+    nix.settings.trusted-users = [ "@wheel" ];
 
   # Ensure nix flakes are enabled
-  nix.settings.experimental-features =[ "flakes" "nix-command" ];
+    nix.settings.experimental-features =[ "flakes" "nix-command" ];
 
   # Couche de compatibilité indispensable qui permet d'exécuter des binaires téléchargés hors de Nix, exemples AppImage, binaire de GitHub, etc.
-  programs.nix-ld.enable = true;
+    programs.nix-ld.enable = true;
 
-  system.stateVersion = "25.05"; # Did you read the comment?
+    system.stateVersion = "25.05"; # Did you read the comment?
 
 } 

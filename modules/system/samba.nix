@@ -3,12 +3,36 @@
 # Samba pour partager des fichiers sur le réseau
 {
   services.samba = {
+    package = pkgs.samba4Full;
+    usershares.enable = true;
     enable = true;
     openFirewall = true;
     nmbd.enable = true;
     workgroup = "WORKGROUP";
-    serverString = "Desktop Samba NixOS";
- 
+    serverString = "sambanix";
+    netbiosName = "sambanix";
+    security = "user";
+    "fruit:aapl" = "yes";
+    "fruit:time machine" = "yes";
+    "vfs objects" = "catia fruit streams_xattr";
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.avahi = {
+    publish.enable = true;
+    publish.userServices = true;
+    nssmdns4 = true;
+    enable = true;
+    openFirewall = true;
+  };
+
+  networking.firewall.enable = true;
+  networking.firewall.allowPing = true;
+
     shares = {
       disque500 = {
         comment = "Disque 500";
@@ -17,8 +41,8 @@
         guestOk = false;
         readOnly = false;
         validUsers = [ "gabriel" ];
-        createMask = "0640";
-        directoryMask = "0750";
+        createMask = "0644";
+        directoryMask = "0755";
     };
       sauvegarde500 = {
         comment = "Sauvegarde 500";
@@ -27,8 +51,8 @@
         guestOk = false;
         readOnly = false;
         validUsers = [ "gabriel" ];
-        createMask = "0640";
-        directoryMask = "0750";
+        createMask = "0644";
+        directoryMask = "0755";
     };
       disque250 = {
         comment = "Disque 250";
@@ -37,8 +61,8 @@
         guestOk = false;
         readOnly = false;
         validUsers = [ "gabriel" ];
-        createMask = "0640";
-        directoryMask = "0750";
+        createMask = "0644";
+        directoryMask = "0755";
     };
       sauvegarde250 = {
         comment = "Sauvegarde 250";
@@ -47,8 +71,8 @@
         guestOk = false;
         readOnly = false;
         validUsers = [ "gabriel" ];
-        createMask = "0640";
-        directoryMask = "0750";
+        createMask = "0644";
+        directoryMask = "0755";
       };
     };
   };
