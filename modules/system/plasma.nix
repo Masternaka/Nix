@@ -30,8 +30,8 @@ environment = {
   systemPackages = with pkgs; [
     kdePackages.partitionmanager
     kdePackages.kpmcore
-    kdePackages.kwin
-    kdePackages.kwin-effects
+    #kdePackages.kwin
+    #kdePackages.kwin-effects
     kdePackages.kdeplasma-addons
     #kio-extras
     #merkuro
