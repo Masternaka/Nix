@@ -9,16 +9,17 @@
    "com.usebottles.bottle"
    "io.github.dvlv.boxbuddyrs"
    "it.mijorus.gearlever"
+   "io.missioncenter.MissionCenter"
   ];
 
-  systemd.services.flatpak-repo = {
-  wantedBy = [ "multi-user.target" ];
-  requires = [ "network-online.target" ];
-  after = [ "network-online.target" ];
-  wants = [ "network-online.target" ];
-  path = [ pkgs.flatpak ];
-  script = ''
-    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  '';
+#  systemd.services.flatpak-repo = {
+#  wantedBy = [ "multi-user.target" ];
+#  requires = [ "network-online.target" ];
+#  after = [ "network-online.target" ];
+#  wants = [ "network-online.target" ];
+#  path = [ pkgs.flatpak ];
+#  script = ''
+#    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#  '';
 
   }

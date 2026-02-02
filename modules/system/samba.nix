@@ -64,21 +64,4 @@
       };
     };
   };
-
-  # Service de découverte WS-Discovery pour Windows
-  services.samba-wsdd = {
-    enable = true;
-    openFirewall = true;
-  };
-
-  # Service Avahi pour la découverte réseau (Bonjour/Zeroconf)
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-    publish = {
-      enable = true;
-      userServices = true;
-    };
-  };
 }

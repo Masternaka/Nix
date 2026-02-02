@@ -9,10 +9,12 @@
       ./modules/system/filesystem.nix
       ./modules/system/service.nix
       ./modules/system/samba.nix
+      ./modules/system/networking.nix
       ./modules/system/firewall.nix
       ./modules/system/plasma.nix
       #./modules/system/gnome.nix
       #./modules/system/xfce.nix
+      #./modules/system/i3wm.nix
     ];
 
   # Bootloader configuration pour systemd-boot.
@@ -27,15 +29,11 @@
   networking.hostName = "desktop-nix"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   # Set your time zone
   time.timeZone = "America/Toronto";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "fr_CA.UTF-8";
-
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -51,8 +49,33 @@
     isNormalUser = true;
     description = "Gabriel Chapdelaine";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "podman" "samba" "lpadmin" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [
 
+
+    ];
+
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+        # When enabled other devices can connect faster to us, however
+        # the tradeoff is increased power consumption. Defaults to
+        # 'false'.
+        FastConnectable = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
+    };
   };
 
   # Ajout de l'accélération matérielle vidéo
@@ -67,7 +90,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
     environment.systemPackages = with pkgs; [
-    vim
+    micro
     wget
     git
     curl

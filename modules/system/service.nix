@@ -22,48 +22,6 @@
     # jack.enable = true;
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  # services.xserver.enable = true;
-  # services.wayland.enable = true;
-
-  # Préférence du displayManager
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "gabriel";
-  # services.displayManager.defaultSession = "hyprland";
-
-  # Enable the GNOME Desktop Environment.
-  # services.displayManager.gdm.enable = true;
-  # services.desktopManager.gnome.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Enable the XFCE Desktop Environment.
-  # services.displayManager.lightdm.enable = true;
-  # services.desktopManager.xfce.enable = true;
-
-  # blueman.enable = true;
-  # Services à activer pour certains environment de bureau
-
-  # Ajout du support flatpak pour l'environment de bureau KDE plasma 6.
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
-    xdgOpenUsePortal = true;
-  };
-
-  # Ajout du support flatpak pour l'environment de bureau GNOME.
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-  #   config.common.default = "gnome";
-  # };
-
-  # Services pour réseau et disque
-  services.gvfs.enable = true;
-
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
@@ -116,5 +74,5 @@
   services.gnome.gnome-keyring.enable = true; # secret service
 
   # Active le service flatpak
-  services.flatpak.enable = true;
+  #services.flatpak.enable = true;
 }
