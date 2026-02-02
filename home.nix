@@ -28,6 +28,7 @@ home.file = {
   home.packages = with pkgs; [
     # Base system
     #zsh
+    #fish
 
     # Terminal emulators et personnalisation
     kitty-themes
@@ -36,11 +37,11 @@ home.file = {
 
     # Utilitaire terminal
     fastfetch
+    zoxide
     fzf
     bat
     #ranger
     #eza
-    zoxide
     yazi
     btop
     ripgrep
@@ -130,7 +131,7 @@ home.file = {
   };
 
   home.sessionVariables = {
-    EDITOR = "neovim";
+    EDITOR = "micro";
     TERM = "kitty";
     BROWSER = "firefox";
   };

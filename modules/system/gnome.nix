@@ -49,10 +49,14 @@ programs.kdeconnect = {
     tela-circle-icon-theme
     vimix-cursors
 
-    # gnome
+    # Gnome
     gnome-tweaks
     showtime
     shotwell
+
+    # Terminal
+    ghostty
+    ptyxis
 
     # Extensions GNOME
     gnomeExtensions.user-theme
