@@ -5,58 +5,83 @@
 
 services = {
   displayManager.lightdm.enable = true;
-  desktopManager.xfce.enable = true;
+  displayManager.defaultSession = "none+i3";
+  desktopManager.xterm.enable = false;
   xserver.enable = true;
   displayManager.autologin = {
     enable = false;
     user = "gabriel";
   };
+
+  windowManager.i3 = {
+    enable = true;
+    extraPackages = with pkgs; [
+      dmenu
+      xorg
+      xorg-dev
+      xbacklight
+      xbindkeys
+      xvkbd
+      xinput
+      xdotool
+      libnotify-bin
+      libnotify-dev
+
+
+    ];
+  }
 };
 
 blueman.enable = true;
 
+programs.dconf.enable = true;
+
 {
   environment.systemPackages = with pkgs; [
-    mugshot
-    xfce4-appfinder
-    xfce4-calculator-plugin
-    xfce4-clipman-plugin
-    xfce4-cpufreq-plugin
-    xfce4-cpugraph-plugin
-    xfce4-diskperf-plugin
-    xfce4-docklike-plugin
-    xfce4-genmon-plugin
-    xfce4-indicator-plugin
-    xfce4-mailwatch-plugin
-    xfce4-mixer
-    xfce4-mpc-plugin
-    xfce4-notes-plugin
-    xfce4-panel-profiles
-    xfce4-places-plugin
-    xfce4-sensors-plugin
-    xfce4-smartbookmark-plugin
-    xfce4-stopwatch-plugin
-    xfce4-systemload-plugin
-    thunar-shares-plugin
-    thunar-volman
-    xfce4-goodies
-    pavucontrol
-    gvfs
-    xarchiver
-    xfce4-xkb-plugin
-    xdg-desktop-portal-xapp
-    xdg-user-dirs-gtk
+    # PACKAGES_CORE=
+    lxappearance
+    sxhkd
+    arandr
+    autotiling
+
+    # PACKAGES_UI
+    polybar
+    rofi
+    dunst
+    feh
+    network-manager-gnome
     network-manager-applet
-    gnome-keyring
-    xdg-user-dirs
-    galculator
-    gvfs-afc
-    gvfs-gphoto2
-    gvfs-mtp
-    gvfs-nfs
-    gvfs-smb
+    lxpolkit
+
+    # PACKAGES_FILE_MANAGER
+    thunar
     thunar-archive-plugin
     thunar-media-tags-plugin
+    thunar-volman
+    gvfs-backends
+    dialog
+    mtools
+    smbclient
+    cifs-utils
+    fd-find
+    unzip
+
+    # PACKAGES_AUDIO
+    pavucontrol
+    pulsemixer
+    pamixer
+
+    # PACKAGES_UTILITIES
+    xfce4-power-manager
+
+    # PACKAGES_TERMINAL
+    suckless-tools
+
+    # PACKAGES_FONTS
+    fonts-recommended
+    fonts-font-awesome
+    fonts-terminus
+
   ];
 
 }
